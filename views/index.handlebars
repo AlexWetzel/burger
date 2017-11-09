@@ -1,0 +1,36 @@
+<div class="container">
+	<h1>Burg</h1>
+
+	<div id="listWrap">
+
+		<div id="uneaten">
+			<ul>
+				{{#each burgers}}
+				    {{#unless devoured}}
+				    	<li data-id="{{ this.id }}">{{ this.burger_name }} <button class="devour">Devour it!</button></li>
+				    {{/unless}}
+				{{/each}}
+			</ul>
+		</div>		
+		
+		<div id="eaten">
+			<ul>
+				{{#each burgers}}
+					{{#if devoured}}
+						<li>{{this.burger_name}}</li>
+					{{/if}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+
+	<div>
+		<form>
+			<textarea id="burger" rows="5" cols="50">
+			
+			</textarea>
+			<button type="submit" id="submit">Submit</button>
+		</form>
+		<p>Submit food you want to eat</p>
+	</div>
+</div>
