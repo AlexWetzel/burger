@@ -14,6 +14,7 @@ var burger = {
 	},
 	update: function(val, condition, cb){
 		orm.updateOne("burgers", val, condition, function(res) {
+			console.log("burger.js working");
 			cb(res);
 		})
 	}
