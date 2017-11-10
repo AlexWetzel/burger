@@ -12,8 +12,10 @@ var burger = {
 		});
 
 	},
-	update: function(){
-
+	update: function(val, condition, cb){
+		orm.updateOne("burgers", val, condition, function(res) {
+			cb(res);
+		})
 	}
 };
 

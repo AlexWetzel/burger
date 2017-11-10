@@ -8,7 +8,10 @@ $(function() {
 		console.log("test");
 		console.log(newBurger);
 
-		$.post("/api/burgers", newBurger).then(
+		$.ajax("/api/burgers/", {
+			type: "POST",
+			data: newBurger
+		}).then(
 			function(data) {
 				console.log("Data posted")
 
@@ -22,11 +25,16 @@ $(function() {
 
 		console.log("test");
 
-		var id = $(this).data("id")
+		var id = $(this).data("id");
 
-		$.post("/api/burgers/:id", newBurger).then(
+		console.log(id);
+
+		$.ajax("/api/burgers/" + id, {
+			type: "PUT",
+			data: id
+		}).then(
 			function(data) {
-				console.log("Data posted")
+				// console.log("Data posted")
 
 				location.reload();
 			}
