@@ -26,13 +26,12 @@ var orm = {
 
 		console.log(queryString);
 
-   connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
+		connection.query(queryString, function(err, result) {
+		    if (err) throw err;
 
-      cb(result);
-    });
+		    console.log("orm.js working");
+		    cb(result);
+		});
 
 	},
 };
