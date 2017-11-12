@@ -1,22 +1,27 @@
+//Dependency
 var connection = require("./connection.js");
 
-var orm = {
-	selectAll: function(table, cb) {
-		var queryString = "SELECT * FROM " + table;
-		connection.query(queryString, function(err, result) {
-			if (err) throw err;
-			cb(result);
-		});
-	},
-	insertOne: function(table, value, cb) {
-		var queryString = "INSERT INTO " + table + " (burger_name) VALUE ('" + value + "');";
 
-		console.log(queryString);
+var orm = {
+	//Selects all entries in the database
+	selectAll: function(table, cb) {
+
+		var queryString = "SELECT * FROM " + table;		
 		connection.query(queryString, function(err, result) {
 			if (err) throw err;
 			cb(result);
 		});
 	},
+	//Inserts a new row into the
+	insertOne: function(table, colName, value, cb) {
+		var queryString = "INSERT INTO " + table + " (" + colName + ") VALUE ('" + value + "');";
+
+		connection.query(queryString, function(err, result) {
+			if (err) throw err;
+			cb(result);
+		});
+	},
+	//Updates a value in a selected row
 	updateOne: function(table, value, condition, cb){
 		var queryString = "UPDATE " + table;
 		queryString += " SET "
@@ -24,15 +29,10 @@ var orm = {
 		queryString += " WHERE "
 		queryString += condition + ";";
 
-		console.log(queryString);
-
 		connection.query(queryString, function(err, result) {
 		    if (err) throw err;
-
-		    console.log("orm.js working");
 		    cb(result);
 		});
-
 	},
 };
 
